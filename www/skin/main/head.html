@@ -17,13 +17,13 @@
                 <li><a href="<?=RT_PATH?>/member/forget_idpwd"><span class="glyphicon glyphicon-question-sign"></span> 아이디/비밀번호 찾기</a></li>
 
                 <? else: ?>
-                <li class="active"><a><span class="glyphicon glyphicon-user"></span> <?=$mb_nick?>님</a></li>
-                  <li><a href="<?=RT_PATH?>/member/point"><span class="glyphicon glyphicon-barcode"></span> <?=$mb_point?>점</a></li>
+                <li class="active"><a><span class="glyphicon glyphicon-user"></span> <?=isset($mb_nick) ? $mb_nick : ''?>님</a></li>
+                <li><a href="<?=RT_PATH?>/member/point"><span class="glyphicon glyphicon-barcode"></span> <?=isset($mb_point) ? $mb_point : 0?>점</a></li>
                 <li><a href="<?=RT_PATH?>/member/login/out"><span class="glyphicon glyphicon-off"></span> 로그아웃</a></li>
                 <li><a href="<?=RT_PATH?>/member/confirm/qry/member.modify"><span class="glyphicon glyphicon-edit"></span> 정보수정</a></li>
                 <li>
-                    <a href="javascript:;" title="읽지 않은 쪽지 <?=$mb_memo_cnt?>개" onclick="win_memo();">
-                        <span class="glyphicon glyphicon-comment"></span> 쪽지 <span class="badge"><?=$mb_memo_cnt?></span>
+                    <a href="javascript:;" title="읽지 않은 쪽지 <?=isset($mb_memo_cnt) ? $mb_memo_cnt : 0?>개" onclick="win_memo();">
+                        <span class="glyphicon glyphicon-comment"></span> 쪽지 <span class="badge"><?=isset($mb_memo_cnt) ? $mb_memo_cnt : 0?></span>
                     </a>
                 </li>
                 <? endif; ?>

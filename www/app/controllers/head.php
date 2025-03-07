@@ -7,8 +7,10 @@ class Head extends Widget {
             $widget = WIDGET_SKIN;
         
         $css = array();
-        if (defined('CSS_SKIN'))
-            $css = explode(',', CSS_SKIN);
+        if (defined('CSS_SKIN')) {
+            $temp_css = explode(',', CSS_SKIN);
+            $css = array_filter($temp_css); // 빈 값 제거
+        }
         
         $var_board = '';
         if (defined('BO_TABLE')) {
@@ -53,6 +55,12 @@ class Head extends Widget {
 
     // 메인
     function main($main=FALSE) {
+        // 기본값 설정
+        $main['mb_nick'] = '';
+        $main['mb_point'] = 0;
+        $main['mb_memo_cnt'] = 0;
+        $main['mb_memo_call'] = '';
+
         if (IS_MEMBER) {
             $mb = unserialize(MEMBER);
             $main['mb_nick']      = $mb['mb_nick'];

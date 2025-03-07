@@ -7,24 +7,26 @@
 <title><?=$title?></title>
 <link rel="stylesheet" type="text/css" href="<?=CSS_DIR?>/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="<?=CSS_DIR?>/common.css" />
-<? foreach ($css as $file): ?>
+<?php foreach ($css as $file): ?>
 <link rel="stylesheet" type="text/css" href="<?=CSS_DIR?>/<?=$file?>.css" />
-<? endforeach; ?>
+<?php endforeach; ?>
 <script type="text/javascript">
 //<![CDATA[
-var rt_path = "<?=RT_PATH?>"
+var rt_path = "<?=RT_PATH?>";
+<?php if (!empty($var_board)): ?>
 <?=$var_board?>
-<? if (SU_ADMIN): ?>
-  , rt_admin = "<?=ADM_F?>"
-<? endif; ?>
-  , rt_charset = "<?=$charset?>";
+<?php endif; ?>
+<?php if (defined('SU_ADMIN') && SU_ADMIN): ?>
+var rt_admin = "<?=ADM_F?>";
+<?php endif; ?>
+var rt_charset = "<?=$charset?>";
 //]]>
 </script>
-<? if (preg_match('/MSIE [5-8]/', $this->input->server('HTTP_USER_AGENT'))): ?>
+<?php if (preg_match('/MSIE [5-8]/', $this->input->server('HTTP_USER_AGENT'))): ?>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<? else: ?>
+<?php else: ?>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<? endif; ?>
+<?php endif; ?>
 <script type="text/javascript" src="<?=JS_DIR?>/bootstrap.js"></script>
 <!--[if lt IE 9]>
 <script type="text/javascript" src="<?=JS_DIR?>/html5shiv.js"></script>

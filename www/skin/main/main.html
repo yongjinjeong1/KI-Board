@@ -3,37 +3,47 @@
         <h4>최근 게시물</h4>
         <hr/>
         <ul class="list-unstyled">
-            <? foreach ($write as $o): ?>
-            <li><span class="glyphicon glyphicon-ok-sign"></span> <a href='<?=$o->href?>'><?=$o->subject?></a> <span class="text-muted"><?=$o->comt_cnt?></span></li>
-            <? endforeach; ?>
+            <?php if (!empty($write)): ?>
+                <?php foreach ($write as $o): ?>
+                <li><span class="glyphicon glyphicon-ok-sign"></span> <a href='<?=$o->href?>'><?=$o->subject?></a> <span class="text-muted"><?=$o->comt_cnt?></span></li>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <li>최근 게시물이 없습니다.</li>
+            <?php endif; ?>
         </ul>
     </div>
     <div class="col-md-6">
         <h4>최근 댓글</h4>
         <hr/>
         <ul class="list-unstyled">
-            <? foreach ($comment as $o): ?>
-            <li><span class="glyphicon glyphicon-ok-circle"></span> <a href='<?=$o->href?>'><?=$o->content?></a></li>
-            <? endforeach; ?>
+            <?php if (!empty($comment)): ?>
+                <?php foreach ($comment as $o): ?>
+                <li><span class="glyphicon glyphicon-ok-circle"></span> <a href='<?=$o->href?>'><?=$o->content?></a></li>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <li>최근 댓글이 없습니다.</li>
+            <?php endif; ?>
         </ul>
     </div>
 </div>
 
 
 <!--// 일반팝업 -->
-<? foreach ($pubasic as $o): ?>
-    <?=$o?>
-<? endforeach; ?>
+<?php if (!empty($pubasic)): ?>
+    <?php foreach ($pubasic as $o): ?>
+        <?=$o?>
+    <?php endforeach; ?>
+<?php endif; ?>
 
 <!--// 레이어팝업 -->
-<? if ($pulayer): ?>
+<?php if (!empty($pulayer)): ?>
 <script type='text/javascript'>
 //<![CDATA[
 $(function() {
-    <? foreach ($pulayer as $o): ?>
+    <?php foreach ($pulayer as $o): ?>
     var popup<?=$o->id?> = <?=$o->html?>
-    <? endforeach; ?>
+    <?php endforeach; ?>
 });
 //]]>
 </script>
-<? endif; ?>
+<?php endif; ?>

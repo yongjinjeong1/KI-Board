@@ -42,10 +42,10 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = '';
+$db['default']['username'] = 'root';
 $db['default']['password'] = '';
-$db['default']['database'] = '';
-$db['default']['dbdriver'] = 'mysql';
+$db['default']['database'] = 'ki_board';
+$db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = FALSE;
 $db['default']['db_debug'] = TRUE;

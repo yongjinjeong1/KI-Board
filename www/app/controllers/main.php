@@ -21,17 +21,22 @@ class Main extends CI_Controller {
                     $pubasic[] = "<div id='popup".$id."' style='position:absolute; width:".$row['pu_width']."px; height:".$row['pu_height']."px; top:".$row['pu_y']."px; left:".$row['pu_x']."px; z-index:100; overflow:hidden;'>".$this->load->view($skin, array('id'=>'popup'.$id), TRUE)."</div>";
                 }
                 else {
+                    $pulayer[$i] = new stdClass();
                     $pulayer[$i]->id = $id;
                     $pulayer[$i]->html = "win_open('popup/".$id."', 'popup".$id."', 'left=".$row['pu_x']."px,top=".$row['pu_y']."px,width=".$row['pu_width']."px,height=".$row['pu_height']."px,scrollbars=0');";
                 }
             }
         }
 
+        // 최근 게시물과 댓글 가져오기
+        $write = $this->Latest_model->write('test', 10, 50);
+        $comment = $this->Latest_model->comment(10, 50);
+
         $data = array(
             'pubasic' => $pubasic,
             'pulayer' => $pulayer,
-            'write'   => $this->Latest_model->write('test', 10, 50),
-            'comment' => $this->Latest_model->comment(10, 50)
+            'write'   => $write ? $write : array(),
+            'comment' => $comment ? $comment : array()
         );
 
         widget::run('head');

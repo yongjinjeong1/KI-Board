@@ -18,7 +18,8 @@ class Widget {
         if (!isset($method)) $method = 'index';
 
         // class name
-        $class = end(explode('/', $controller));
+        $parts = explode('/', $controller);
+        $class = end($parts);
 
         if ($class = new $class()) {
             if (method_exists($class, $method)) {
